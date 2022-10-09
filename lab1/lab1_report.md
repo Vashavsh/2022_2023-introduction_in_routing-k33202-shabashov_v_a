@@ -66,7 +66,7 @@ topology:
     - endpoints: ["SW02.L3.02.TEST:eth2","PC2:eth1"]
 ```
 2. Схема связи
-![](//draw.png)
+![](https://github.com/Antoshik143/2022_2023-introduction_in_routing-k33202-davydov_a_d/blob/main/lab1/draw.png "Схема сети")
 3. Тексты конфигураций для сетевых устройств
  * Роутер
 ```
