@@ -1,17 +1,22 @@
 #### University: [ITMO University](https://itmo.ru/ru/)
 ##### Faculty: [FICT](https://fict.itmo.ru)
 ##### Course: [Introduction in routing](https://github.com/itmo-ict-faculty/introduction-in-routing)
-University: [ITMO University](https://itmo.ru/ru/)
-Faculty: [FICT](https://fict.itmo.ru)
-Course: [Introduction in routing](https://github.com/itmo-ict-faculty/introduction-in-routing)
+##### University: [ITMO University](https://itmo.ru/ru/)
+##### Faculty: [FICT](https://fict.itmo.ru)
+##### Course: [Introduction in routing](https://github.com/itmo-ict-faculty/introduction-in-routing)
 Year: 2022/2023
+
 Group: K33202
+
 Author: Davydov Anton Dmitrievich
+
 Lab: Lab1
+
 Date of create: 10.09.2022
+
 Date of finished: 21.10.2022
 
-#### Отчёт по лабораторной работе №1 "Установка ContainerLab и развертывание тестовой сети связи"
+### Отчёт по лабораторной работе №1 "Установка ContainerLab и развертывание тестовой сети связи"
 
 **Цель работы:** ознакомиться с инструментом ContainerLab и методами работы с ним, изучить работу VLAN, IP адресации и т. д.
 
@@ -66,6 +71,7 @@ topology:
     - endpoints: ["SW02.L3.02.TEST:eth2","PC2:eth1"]
 ```
 2. Схема связи
+
 ![](https://github.com/Antoshik143/2022_2023-introduction_in_routing-k33202-davydov_a_d/blob/main/lab1/draw.png "Схема сети")
 3. Тексты конфигураций для сетевых устройств
  * Роутер
