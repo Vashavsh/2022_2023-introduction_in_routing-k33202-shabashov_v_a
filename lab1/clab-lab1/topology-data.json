@@ -6,7 +6,7 @@
       "prefix": "clab",
       "mgmt": {
         "network": "statics",
-        "bridge": "br-b9b9f7110502",
+        "bridge": "br-ee539ab828c3",
         "ipv4-subnet": "172.20.20.0/24",
         "ipv4-gw": "172.20.20.1",
         "mtu": "1500",
@@ -32,7 +32,7 @@
       "mgmt-ipv6-prefix-length": 0,
       "mac-address": "",
       "labels": {
-        "clab-mgmt-net-bridge": "br-b9b9f7110502",
+        "clab-mgmt-net-bridge": "br-ee539ab828c3",
         "clab-node-group": "",
         "clab-node-kind": "linux",
         "clab-node-lab-dir": "/home/anton/2022_2023-introduction_in_routing-k33202-davydov_a_d/lab1/clab-lab1/PC1",
@@ -59,7 +59,7 @@
       "mgmt-ipv6-prefix-length": 0,
       "mac-address": "",
       "labels": {
-        "clab-mgmt-net-bridge": "br-b9b9f7110502",
+        "clab-mgmt-net-bridge": "br-ee539ab828c3",
         "clab-node-group": "",
         "clab-node-kind": "linux",
         "clab-node-lab-dir": "/home/anton/2022_2023-introduction_in_routing-k33202-davydov_a_d/lab1/clab-lab1/PC2",
@@ -86,7 +86,7 @@
       "mgmt-ipv6-prefix-length": 0,
       "mac-address": "",
       "labels": {
-        "clab-mgmt-net-bridge": "br-b9b9f7110502",
+        "clab-mgmt-net-bridge": "br-ee539ab828c3",
         "clab-node-group": "",
         "clab-node-kind": "vr-mikrotik_ros",
         "clab-node-lab-dir": "/home/anton/2022_2023-introduction_in_routing-k33202-davydov_a_d/lab1/clab-lab1/R01.TEST",
@@ -113,7 +113,7 @@
       "mgmt-ipv6-prefix-length": 0,
       "mac-address": "",
       "labels": {
-        "clab-mgmt-net-bridge": "br-b9b9f7110502",
+        "clab-mgmt-net-bridge": "br-ee539ab828c3",
         "clab-node-group": "",
         "clab-node-kind": "vr-mikrotik_ros",
         "clab-node-lab-dir": "/home/anton/2022_2023-introduction_in_routing-k33202-davydov_a_d/lab1/clab-lab1/SW01.L3.01.TEST",
@@ -140,7 +140,7 @@
       "mgmt-ipv6-prefix-length": 0,
       "mac-address": "",
       "labels": {
-        "clab-mgmt-net-bridge": "br-b9b9f7110502",
+        "clab-mgmt-net-bridge": "br-ee539ab828c3",
         "clab-node-group": "",
         "clab-node-kind": "vr-mikrotik_ros",
         "clab-node-lab-dir": "/home/anton/2022_2023-introduction_in_routing-k33202-davydov_a_d/lab1/clab-lab1/SW02.L3.01.TEST",
@@ -167,7 +167,7 @@
       "mgmt-ipv6-prefix-length": 0,
       "mac-address": "",
       "labels": {
-        "clab-mgmt-net-bridge": "br-b9b9f7110502",
+        "clab-mgmt-net-bridge": "br-ee539ab828c3",
         "clab-node-group": "",
         "clab-node-kind": "vr-mikrotik_ros",
         "clab-node-lab-dir": "/home/anton/2022_2023-introduction_in_routing-k33202-davydov_a_d/lab1/clab-lab1/SW02.L3.02.TEST",
@@ -183,13 +183,13 @@
       "a": {
         "node": "R01.TEST",
         "interface": "eth1",
-        "mac": "aa:c1:ab:e7:a9:0b",
+        "mac": "aa:c1:ab:c1:2a:29",
         "peer": "z"
       },
       "z": {
         "node": "SW01.L3.01.TEST",
         "interface": "eth1",
-        "mac": "aa:c1:ab:ec:f9:02",
+        "mac": "aa:c1:ab:16:41:69",
         "peer": "a"
       }
     },
@@ -197,13 +197,13 @@
       "a": {
         "node": "SW01.L3.01.TEST",
         "interface": "eth2",
-        "mac": "aa:c1:ab:50:81:0f",
+        "mac": "aa:c1:ab:77:99:7b",
         "peer": "z"
       },
       "z": {
         "node": "SW02.L3.01.TEST",
         "interface": "eth1",
-        "mac": "aa:c1:ab:b9:bb:66",
+        "mac": "aa:c1:ab:37:a0:5a",
         "peer": "a"
       }
     },
@@ -211,13 +211,13 @@
       "a": {
         "node": "SW01.L3.01.TEST",
         "interface": "eth3",
-        "mac": "aa:c1:ab:6a:d0:06",
+        "mac": "aa:c1:ab:12:e9:0d",
         "peer": "z"
       },
       "z": {
         "node": "SW02.L3.02.TEST",
         "interface": "eth1",
-        "mac": "aa:c1:ab:cd:53:71",
+        "mac": "aa:c1:ab:44:77:51",
         "peer": "a"
       }
     },
@@ -225,13 +225,13 @@
       "a": {
         "node": "SW02.L3.01.TEST",
         "interface": "eth2",
-        "mac": "aa:c1:ab:bd:86:a8",
+        "mac": "aa:c1:ab:0a:59:4b",
         "peer": "z"
       },
       "z": {
         "node": "PC1",
         "interface": "eth1",
-        "mac": "aa:c1:ab:82:89:2a",
+        "mac": "aa:c1:ab:08:24:57",
         "peer": "a"
       }
     },
@@ -239,13 +239,13 @@
       "a": {
         "node": "SW02.L3.02.TEST",
         "interface": "eth2",
-        "mac": "aa:c1:ab:50:86:e6",
+        "mac": "aa:c1:ab:d9:3d:98",
         "peer": "z"
       },
       "z": {
         "node": "PC2",
         "interface": "eth1",
-        "mac": "aa:c1:ab:74:55:e0",
+        "mac": "aa:c1:ab:ad:c2:0f",
         "peer": "a"
       }
     }

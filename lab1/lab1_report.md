@@ -1,11 +1,25 @@
+<<<<<<< HEAD
 #### University: [ITMO University](https://itmo.ru/ru/)
 ##### Faculty: [FICT](https://fict.itmo.ru)
 ##### Course: [Introduction in routing](https://github.com/itmo-ict-faculty/introduction-in-routing)
+=======
+University: [ITMO University](https://itmo.ru/ru/)
+
+Faculty: [FICT](https://fict.itmo.ru)
+
+Course: [Introduction in routing](https://github.com/itmo-ict-faculty/introduction-in-routing)
+
+>>>>>>> b70e0cb188a08d80f59605871a0004dad86520f1
 Year: 2022/2023
+
 Group: K33202
+
 Author: Davydov Anton Dmitrievich
+
 Lab: Lab1
+
 Date of create: 10.09.2022
+<<<<<<< HEAD
 Date of finished: 21.10.2022
 
 #### Отчёт по лабораторной работе №1 "Установка ContainerLab и развертывание тестовой сети связи"
@@ -180,3 +194,7 @@ set name=SW02.L3.02.TEST
 
 ![](/Ping1.png "Проверка локальной сети и пингов с роутера")
 ![](/Ping2.png "Проверка пингов со свитча 2 уровня")
+=======
+
+Date of finished: xx.xx.2022
+>>>>>>> b70e0cb188a08d80f59605871a0004dad86520f1
