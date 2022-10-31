@@ -190,3 +190,6 @@ set name=SW02.L3.02.TEST
 
 ![](https://github.com/Antoshik143/2022_2023-introduction_in_routing-k33202-davydov_a_d/blob/main/lab1/Ping1.png "Проверка локальной сети и пингов с роутера")
 ![](https://github.com/Antoshik143/2022_2023-introduction_in_routing-k33202-davydov_a_d/blob/main/lab1/Ping2.png "Проверка пингов со свитча 2 уровня")
+
+**Вывод:**
+В ходе работы мы 
