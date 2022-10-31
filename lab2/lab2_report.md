@@ -242,3 +242,5 @@ set name=PC3
 
 ![](https://github.com/Antoshik143/2022_2023-introduction_in_routing-k33202-davydov_a_d/blob/main/lab2/Picture1.png "Проверка доступности сетей PC1 и PC2 с PC3.")
 ![](https://github.com/Antoshik143/2022_2023-introduction_in_routing-k33202-davydov_a_d/blob/main/lab2/Picture2.png "Проверка доступности с PC2.")
+
+**Вывод** В ходе работы
