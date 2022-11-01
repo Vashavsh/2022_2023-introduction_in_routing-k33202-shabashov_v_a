@@ -78,7 +78,7 @@ topology:
 
 2. Схема связи
 
-![](https://github.com/Antoshik143/2022_2023-introduction_in_routing-k33202-davydov_a_d/blob/main/lab2/draw.png "Схема сети")
+![](https://github.com/Antoshik143/2022_2023-introduction_in_routing-k33202-davydov_a_d/blob/main/lab2/Схема.png "Схема сети")
 
 3. Тексты конфигураций для сетевых устройств
 
