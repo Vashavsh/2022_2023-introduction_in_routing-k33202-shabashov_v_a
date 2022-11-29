@@ -1,29 +1,3 @@
-University: [ITMO University](https://itmo.ru/ru/)
-
-Faculty: [FICT](https://fict.itmo.ru)
-
-Course: [Introduction in routing](https://github.com/itmo-ict-faculty/introduction-in-routing)
-
-Year: 2022/2023
-
-Group: K33202
-
-Author: Davydov Anton Dmitrievich
-
-Lab: Lab3
-
-Date of create: 29.11.2022
-
-Date of finished: 02.12.2022
-
-## Отчёт по лабораторной работе №3 "Эмуляция распределенной корпоративной сети связи, настройка OSPF и MPLS, организация первого EoMPLS"
-
-**Цель работы:** изучить протоколы OSPF и MPLS, механизмы организации EoMPLS. 
-
-**Артефакты выполнения работы:**
-
-1. Текст файла для развертывания тестовой сети с расширением .yaml
-```
 name: lab3
 
 mgmt:
@@ -84,4 +58,4 @@ topology:
     - endpoints: ["R01.LND:eth2","R01.NY:eth1"]
     - endpoints: ["R01.LBN:eth3","R01.NY:eth2"]
     - endpoints: ["R01.NY:eth3","SGI.Prism:eth1"]
-```
+
