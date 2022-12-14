@@ -85,3 +85,9 @@ topology:
     - endpoints: ["R01.LBN:eth3","R01.NY:eth2"]
     - endpoints: ["R01.NY:eth3","SGI.Prism:eth1"]
 ```
+
+2. Схема связи
+
+![](https://github.com/Antoshik143/2022_2023-introduction_in_routing-k33202-davydov_a_d/blob/main/lab3/Схема.png "Схема сети")
+
+3. Тексты конфигураций для сетевых устройств
