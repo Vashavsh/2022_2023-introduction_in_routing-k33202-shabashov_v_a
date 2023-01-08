@@ -140,19 +140,6 @@ set name=R01.NY
 * Роутер R01.LND
 
 ```
-# jan/08/2023 15:31:32 by RouterOS 6.47.9
-# software id = 
-#
-#
-#
-/routing bgp peer
-add address-families=ip,l2vpn,l2vpn-cisco,vpnv4 name=peer3 remote-address=10.10.10.1 remote-as=65530 update-source=Lo0
-add address-families=ip,l2vpn,l2vpn-cisco,vpnv4 name=peer1 remote-address=10.10.10.3 remote-as=65530 route-reflect=yes \
-    update-source=Lo0
-add address-families=ip,l2vpn,l2vpn-cisco,vpnv4 name=peer2 remote-address=10.10.10.5 remote-as=65530 route-reflect=yes \
-    update-source=Lo0
-[admin@R01.LND] /routing bgp peer> /
-[admin@R01.LND] > export
 # jan/08/2023 15:31:40 by RouterOS 6.47.9
 # software id = 
 #
