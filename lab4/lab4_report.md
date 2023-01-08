@@ -94,4 +94,262 @@ topology:
 
 ![](https://github.com/Antoshik143/2022_2023-introduction_in_routing-k33202-davydov_a_d/blob/main/lab4/Pictures/Схема.png "Схема сети")
 
-3. Конфиги будут...
+3. Тексты конфигураций для сетевых устройств
+
+* Роутер R01.NY
+
+```
+# jan/08/2023 15:20:47 by RouterOS 6.47.9
+# software id = 
+#
+#
+#
+/interface bridge
+add name=Lo0
+/interface wireless security-profiles
+set [ find default=yes ] supplicant-identity=MikroTik
+/routing bgp instance
+set default redistribute-connected=yes router-id=10.10.10.1
+/routing ospf instance
+set [ find default=yes ] name=ospf0 router-id=10.10.10.1
+/ip address
+add address=172.31.255.30/30 interface=ether1 network=172.31.255.28
+add address=192.168.20.10/24 interface=ether2 network=192.168.20.0
+add address=10.10.1.1/30 interface=ether4 network=10.10.1.0
+add address=10.10.10.1 interface=Lo0 network=10.10.10.1
+/ip dhcp-client
+add disabled=no interface=ether1
+add disabled=no interface=ether2
+/ip route vrf
+add export-route-targets=65530:100 import-route-targets=65530:100 interfaces=ether2 route-distinguisher=65530:100 \
+    routing-mark=VRF_DEVOPS
+/mpls ldp
+set enabled=yes transport-address=10.10.10.1
+/mpls ldp interface
+add interface=ether4
+/routing bgp instance vrf
+add redistribute-connected=yes routing-mark=VRF_DEVOPS
+/routing bgp peer
+add address-families=ip,l2vpn,l2vpn-cisco,vpnv4 name=peer1 remote-address=10.10.10.2 remote-as=65530 update-source=Lo0
+/routing ospf network
+add area=backbone
+/system identity
+set name=R01.NY
+```
+
+* Роутер R01.LND
+
+```
+# jan/08/2023 15:31:32 by RouterOS 6.47.9
+# software id = 
+#
+#
+#
+/routing bgp peer
+add address-families=ip,l2vpn,l2vpn-cisco,vpnv4 name=peer3 remote-address=10.10.10.1 remote-as=65530 update-source=Lo0
+add address-families=ip,l2vpn,l2vpn-cisco,vpnv4 name=peer1 remote-address=10.10.10.3 remote-as=65530 route-reflect=yes \
+    update-source=Lo0
+add address-families=ip,l2vpn,l2vpn-cisco,vpnv4 name=peer2 remote-address=10.10.10.5 remote-as=65530 route-reflect=yes \
+    update-source=Lo0
+[admin@R01.LND] /routing bgp peer> /
+[admin@R01.LND] > export
+# jan/08/2023 15:31:40 by RouterOS 6.47.9
+# software id = 
+#
+#
+#
+/interface bridge
+add name=Lo0
+/interface wireless security-profiles
+set [ find default=yes ] supplicant-identity=MikroTik
+/routing bgp instance
+set default router-id=10.10.10.2
+/routing ospf instance
+set [ find default=yes ] name=ospf0 router-id=10.10.10.2
+/ip address
+add address=172.31.255.30/30 interface=ether1 network=172.31.255.28
+add address=10.10.1.2/30 interface=ether4 network=10.10.1.0
+add address=10.10.2.1/30 interface=ether2 network=10.10.2.0
+add address=10.10.4.1/30 interface=ether3 network=10.10.4.0
+add address=10.10.10.2 interface=Lo0 network=10.10.10.2
+/ip dhcp-client
+add disabled=no interface=ether1
+/mpls ldp
+set enabled=yes transport-address=10.10.10.2
+/mpls ldp interface
+add interface=ether2
+add interface=ether3
+add interface=ether4
+/routing bgp peer
+add address-families=ip,l2vpn,l2vpn-cisco,vpnv4 name=peer3 remote-address=10.10.10.1 remote-as=65530 update-source=Lo0
+add address-families=ip,l2vpn,l2vpn-cisco,vpnv4 name=peer1 remote-address=10.10.10.3 remote-as=65530 route-reflect=yes \
+    update-source=Lo0
+add address-families=ip,l2vpn,l2vpn-cisco,vpnv4 name=peer2 remote-address=10.10.10.5 remote-as=65530 route-reflect=yes \
+    update-source=Lo0
+/routing ospf network
+add area=backbone
+/system identity
+set name=R01.LND
+```
+
+* Роутер R01.HKI
+
+```
+# jan/08/2023 15:38:48 by RouterOS 6.47.9
+# software id = 
+#
+#
+#
+/interface bridge
+add name=Lo0
+/interface wireless security-profiles
+set [ find default=yes ] supplicant-identity=MikroTik
+/routing bgp instance
+set default router-id=10.10.10.3
+/routing ospf instance
+set [ find default=yes ] name=ospf0 router-id=10.10.10.3
+/ip address
+add address=172.31.255.30/30 interface=ether1 network=172.31.255.28
+add address=10.10.10.3 interface=Lo0 network=10.10.10.3
+add address=10.10.2.2/30 interface=ether3 network=10.10.2.0
+add address=10.10.5.1/30 interface=ether2 network=10.10.5.0
+add address=10.10.3.1/30 interface=ether4 network=10.10.3.0
+/ip dhcp-client
+add disabled=no interface=ether1
+/mpls ldp interface
+add interface=ether2
+add interface=ether3
+add interface=ether4
+/routing bgp peer
+add address-families=ip,l2vpn,l2vpn-cisco,vpnv4 name=peer1 remote-address=10.10.10.2 remote-as=65530 route-reflect=yes \
+    update-source=Lo0
+add address-families=ip,l2vpn,l2vpn-cisco,vpnv4 name=peer2 remote-address=10.10.10.5 remote-as=65530 route-reflect=yes \
+    update-source=Lo0
+add address-families=ip,l2vpn,l2vpn-cisco,vpnv4 name=peer3 remote-address=10.10.10.4 remote-as=65530 update-source=Lo0
+/routing ospf network
+add area=backbone
+/system identity
+set name=R01.HKI
+```
+
+* Роутер R01.LBN
+
+```
+# jan/08/2023 15:45:35 by RouterOS 6.47.9
+# software id = 
+#
+#
+#
+/interface bridge
+add name=Lo0
+/interface wireless security-profiles
+set [ find default=yes ] supplicant-identity=MikroTik
+/routing bgp instance
+set default router-id=10.10.10.5
+/routing ospf instance
+set [ find default=yes ] name=ospf0 router-id=10.10.10.5
+/ip address
+add address=172.31.255.30/30 interface=ether1 network=172.31.255.28
+add address=10.10.10.5 interface=Lo0 network=10.10.10.5
+add address=10.10.4.2/30 interface=ether2 network=10.10.4.0
+add address=10.10.5.2/30 interface=ether3 network=10.10.5.0
+add address=10.10.6.1/30 interface=ether4 network=10.10.6.0
+/ip dhcp-client
+add disabled=no interface=ether1
+/mpls ldp
+set enabled=yes transport-address=10.10.10.5
+/mpls ldp interface
+add interface=ether2
+add interface=ether3
+add interface=ether4
+/routing bgp peer
+add address-families=ip,l2vpn,l2vpn-cisco,vpnv4 name=peer1 remote-address=10.10.10.2 remote-as=65530 route-reflect=yes update-source=Lo0
+add address-families=ip,l2vpn,l2vpn-cisco,vpnv4 name=peer2 remote-address=10.10.10.3 remote-as=65530 route-reflect=yes update-source=Lo0
+add address-families=ip,l2vpn,l2vpn-cisco,vpnv4 name=peer3 remote-address=10.10.10.6 remote-as=65530 update-source=Lo0
+/routing ospf network
+add area=backbone
+/system identity
+set name=R01.LBN
+```
+
+* Роутер R01.SPB
+
+```
+# jan/08/2023 16:07:13 by RouterOS 6.47.9
+# software id = 
+#
+#
+#
+/interface bridge
+add name=Lo0
+/interface wireless security-profiles
+set [ find default=yes ] supplicant-identity=MikroTik
+/routing bgp instance
+set default router-id=10.10.10.4
+/routing ospf instance
+set [ find default=yes ] name=ospf0 router-id=10.10.10.4
+/ip address
+add address=172.31.255.30/30 interface=ether1 network=172.31.255.28
+add address=10.10.3.2/30 interface=ether4 network=10.10.3.0
+add address=10.10.10.4 interface=Lo0 network=10.10.10.4
+add address=192.168.10.10/24 interface=ether2 network=192.168.10.0
+/ip dhcp-client
+add disabled=no interface=ether1
+/ip route vrf
+add export-route-targets=65530:100 import-route-targets=65530:100 interfaces=ether2 route-distinguisher=65530:100 routing-mark=VRF_DEVOPS
+/mpls ldp
+set enabled=yes transport-address=10.10.10.4
+/mpls ldp interface
+add interface=ether4
+/routing bgp instance vrf
+add redistribute-connected=yes routing-mark=VRF_DEVOPS
+/routing bgp peer
+add address-families=ip,l2vpn,l2vpn-cisco,vpnv4 name=peer1 remote-address=10.10.10.3 remote-as=65530 update-source=Lo0
+/routing ospf network
+add area=backbone
+/system identity
+set name=R01.SPB
+```
+
+* Роутер R01.SVL
+
+```
+# jan/08/2023 15:59:50 by RouterOS 6.47.9
+# software id = 
+#
+#
+#
+/interface bridge
+add name=Lo0
+/interface wireless security-profiles
+set [ find default=yes ] supplicant-identity=MikroTik
+/routing bgp instance
+set default router-id=10.10.10.6
+/routing ospf instance
+set [ find default=yes ] name=ospf0 router-id=10.10.10.6
+/ip address
+add address=172.31.255.30/30 interface=ether1 network=172.31.255.28
+add address=10.10.10.6 interface=Lo0 network=10.10.10.6
+add address=192.168.30.10/24 interface=ether2 network=192.168.30.0
+add address=10.10.6.2/30 interface=ether4 network=10.10.6.0
+/ip dhcp-client
+add disabled=no interface=ether1
+/ip route vrf
+add export-route-targets=65530:100 import-route-targets=65530:100 interfaces=ether2 route-distinguisher=65530:100 routing-mark=VRF_DEVOPS
+/mpls ldp
+set enabled=yes transport-address=10.10.10.6
+/mpls ldp interface
+add interface=ether4
+/routing bgp instance vrf
+add redistribute-connected=yes routing-mark=VRF_DEVOPS
+/routing bgp peer
+add address-families=ip,l2vpn,l2vpn-cisco,vpnv4 name=peer1 remote-address=10.10.10.5 remote-as=65530 update-source=Lo0
+/routing ospf network
+add area=backbone
+/system identity
+set name=R01.SVL
+```
+
+4. Проверка связности между VRF
+
+![](https://github.com/Antoshik143/2022_2023-introduction_in_routing-k33202-davydov_a_d/blob/main/lab4/Pictures/VRF.png "VRF")
