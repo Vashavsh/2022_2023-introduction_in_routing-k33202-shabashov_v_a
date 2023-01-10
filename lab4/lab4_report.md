@@ -14,7 +14,7 @@ Lab: Lab4
 
 Date of create: 23.12.2022
 
-Date of finished: 26.12.2022
+Date of finished: 16.01.2023
 
 ## Отчёт по лабораторной работе №4 "Эмуляция распределенной корпоративной сети связи, настройка iBGP, организация L3VPN, VPLS"
 
@@ -340,3 +340,68 @@ set name=R01.SVL
 4. Проверка связности между VRF
 
 ![](https://github.com/Antoshik143/2022_2023-introduction_in_routing-k33202-davydov_a_d/blob/main/lab4/Pictures/VRF.png "VRF")
+
+5. Настройка VPLS (конфигурации устройств)
+
+* PC1
+
+```
+# jan/10/2023 11:37:43 by RouterOS 6.47.9
+# software id = 
+#
+#
+#
+/interface wireless security-profiles
+set [ find default=yes ] supplicant-identity=MikroTik
+/ip address
+add address=172.31.255.30/30 interface=ether1 network=172.31.255.28
+add address=192.168.40.12/24 interface=ether2 network=192.168.40.0
+/ip dhcp-client
+add disabled=no interface=ether1
+/system identity
+set name=PC1
+```
+
+* PC2
+
+```
+# jan/10/2023 11:39:21 by RouterOS 6.47.9
+# software id = 
+#
+#
+#
+/interface wireless security-profiles
+set [ find default=yes ] supplicant-identity=MikroTik
+/ip address
+add address=172.31.255.30/30 interface=ether1 network=172.31.255.28
+add address=192.168.40.11/24 interface=ether2 network=192.168.40.0
+/ip dhcp-client
+add disabled=no interface=ether1
+/system identity
+set name=PC2
+```
+
+* PC3
+
+```
+# jan/10/2023 11:40:26 by RouterOS 6.47.9
+# software id = 
+#
+#
+#
+/interface wireless security-profiles
+set [ find default=yes ] supplicant-identity=MikroTik
+/ip address
+add address=172.31.255.30/30 interface=ether1 network=172.31.255.28
+add address=192.168.40.13/24 interface=ether2 network=192.168.40.0
+/ip dhcp-client
+add disabled=no interface=ether1
+/system identity
+set name=PC3
+```
+
+* R01.NY
+* R01.SPB
+* R01.SVL
+
+
