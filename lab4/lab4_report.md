@@ -526,6 +526,7 @@ add area=backbone
 set name=R01.SVL
 ```
 6. Проверка связности ПК.
+
 ![](https://github.com/Antoshik143/2022_2023-introduction_in_routing-k33202-davydov_a_d/blob/main/lab4/Pictures/Пинг1.png "Пинг1")
 ![](https://github.com/Antoshik143/2022_2023-introduction_in_routing-k33202-davydov_a_d/blob/main/lab4/Pictures/Пинг2.png "Пинг2")
 ![](https://github.com/Antoshik143/2022_2023-introduction_in_routing-k33202-davydov_a_d/blob/main/lab4/Pictures/Пинг3.png "Пинг3")
