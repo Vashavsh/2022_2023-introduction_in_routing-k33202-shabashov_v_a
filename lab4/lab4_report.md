@@ -355,7 +355,7 @@ set name=R01.SVL
 set [ find default=yes ] supplicant-identity=MikroTik
 /ip address
 add address=172.31.255.30/30 interface=ether1 network=172.31.255.28
-add address=192.168.40.12/24 interface=ether2 network=192.168.40.0
+add address=192.168.0.1/24 interface=ether2 network=192.168.0.0
 /ip dhcp-client
 add disabled=no interface=ether1
 /system identity
@@ -374,7 +374,7 @@ set name=PC1
 set [ find default=yes ] supplicant-identity=MikroTik
 /ip address
 add address=172.31.255.30/30 interface=ether1 network=172.31.255.28
-add address=192.168.40.11/24 interface=ether2 network=192.168.40.0
+add address=192.168.0.2/24 interface=ether2 network=192.168.0.0
 /ip dhcp-client
 add disabled=no interface=ether1
 /system identity
@@ -393,7 +393,7 @@ set name=PC2
 set [ find default=yes ] supplicant-identity=MikroTik
 /ip address
 add address=172.31.255.30/30 interface=ether1 network=172.31.255.28
-add address=192.168.40.13/24 interface=ether2 network=192.168.40.0
+add address=192.168.0.3/24 interface=ether2 network=192.168.0.0
 /ip dhcp-client
 add disabled=no interface=ether1
 /system identity
@@ -403,7 +403,7 @@ set name=PC3
 * R01.NY
 
 ```
-# jan/12/2023 13:14:06 by RouterOS 6.47.9
+# jan/12/2023 16:36:21 by RouterOS 6.47.9
 # software id = 
 #
 #
@@ -412,8 +412,8 @@ set name=PC3
 add name=Lo
 add name=VPLS
 /interface vpls
+add disabled=no l2mtu=1500 mac-address=02:3B:11:73:24:F9 name=VPLS3 remote-peer=10.10.10.6 vpls-id=10:0
 add disabled=no l2mtu=1500 mac-address=02:CB:23:D2:D0:7C name=vpls1 remote-peer=10.10.10.4 vpls-id=10:0
-add disabled=no l2mtu=1500 mac-address=02:24:62:59:B9:A0 name=vpls2 remote-peer=10.10.10.6 vpls-id=10:0
 /interface wireless security-profiles
 set [ find default=yes ] supplicant-identity=MikroTik
 /routing bgp instance
@@ -423,11 +423,10 @@ set [ find default=yes ] router-id=10.10.10.1
 /interface bridge port
 add bridge=VPLS interface=ether2
 add bridge=VPLS interface=vpls1
-add bridge=VPLS interface=vpls2
+add bridge=VPLS interface=VPLS3
 /ip address
 add address=172.31.255.30/30 interface=ether1 network=172.31.255.28
 add address=10.10.10.1 interface=Lo network=10.10.10.1
-add address=192.168.20.10/24 interface=ether2 network=192.168.20.0
 add address=10.10.1.1/30 interface=ether4 network=10.10.1.0
 /ip dhcp-client
 add disabled=no interface=ether1
@@ -441,13 +440,12 @@ add address-families=ip,l2vpn,l2vpn-cisco,vpnv4 name=peer1 remote-address=10.10.
 add area=backbone
 /system identity
 set name=R01.NY
-
 ```
 
 * R01.SPB
 
 ```
-# jan/12/2023 13:26:00 by RouterOS 6.47.9
+# jan/12/2023 16:35:35 by RouterOS 6.47.9
 # software id = 
 #
 #
@@ -471,7 +469,6 @@ add bridge=VPLS interface=vpls2
 /ip address
 add address=172.31.255.30/30 interface=ether1 network=172.31.255.28
 add address=10.10.3.2/30 interface=ether4 network=10.10.3.0
-add address=192.168.10.10/24 interface=ether2 network=192.168.10.0
 add address=10.10.10.4 interface=Lo network=10.10.10.4
 /ip dhcp-client
 add disabled=no interface=ether1
@@ -485,13 +482,12 @@ add address-families=ip,l2vpn,l2vpn-cisco,vpnv4 name=peer1 remote-address=10.10.
 add area=backbone
 /system identity
 set name=R01.SPB
-
 ```
 
 * R01.SVL
 
 ```
-# jan/12/2023 13:30:24 by RouterOS 6.47.9
+# jan/12/2023 16:37:30 by RouterOS 6.47.9
 # software id = 
 #
 #
@@ -500,7 +496,7 @@ set name=R01.SPB
 add name=Lo
 add name=VPLS
 /interface vpls
-add disabled=no l2mtu=1500 mac-address=02:C7:F9:E4:0E:6F name=vpls1 remote-peer=10.10.10.1 vpls-id=10:0
+add disabled=no l2mtu=1500 mac-address=02:3F:4F:5F:C7:41 name=VPLS3 remote-peer=10.10.10.1 vpls-id=10:0
 add disabled=no l2mtu=1500 mac-address=02:C0:D7:89:7A:9C name=vpls2 remote-peer=10.10.10.4 vpls-id=10:0
 /interface wireless security-profiles
 set [ find default=yes ] supplicant-identity=MikroTik
@@ -510,11 +506,10 @@ set default router-id=10.10.10.6
 set [ find default=yes ] router-id=10.10.10.6
 /interface bridge port
 add bridge=VPLS interface=ether2
-add bridge=VPLS interface=vpls1
+add bridge=VPLS interface=VPLS3
 add bridge=VPLS interface=vpls2
 /ip address
 add address=172.31.255.30/30 interface=ether1 network=172.31.255.28
-add address=192.168.30.10/24 interface=ether2 network=192.168.30.0
 add address=10.10.6.2/30 interface=ether4 network=10.10.6.0
 add address=10.10.10.6 interface=Lo network=10.10.10.6
 /ip dhcp-client
@@ -530,4 +525,9 @@ add area=backbone
 /system identity
 set name=R01.SVL
 ```
+6. Проверка связности ПК.
+![](https://github.com/Antoshik143/2022_2023-introduction_in_routing-k33202-davydov_a_d/blob/main/lab4/Pictures/Пинг1.png "Пинг1")
+![](https://github.com/Antoshik143/2022_2023-introduction_in_routing-k33202-davydov_a_d/blob/main/lab4/Pictures/Пинг2.png "Пинг2")
+![](https://github.com/Antoshik143/2022_2023-introduction_in_routing-k33202-davydov_a_d/blob/main/lab4/Pictures/Пинг3.png "Пинг3")
 
+**Вывод:** В ходе лабораторной работы мы создали файл конфигурации, на основе которого создали сеть. В сети мы настроили IP-адреса на портах всех устройств, а также были изучены протоколы BGP, MPLS, VPLS и L3VPN.
