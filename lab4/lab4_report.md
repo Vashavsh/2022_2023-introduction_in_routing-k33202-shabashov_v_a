@@ -14,7 +14,7 @@ Lab: Lab4
 
 Date of create: 23.12.2022
 
-Date of finished: 16.01.2023
+Date of finished: 13.01.2023
 
 ## Отчёт по лабораторной работе №4 "Эмуляция распределенной корпоративной сети связи, настройка iBGP, организация L3VPN, VPLS"
 
@@ -401,7 +401,133 @@ set name=PC3
 ```
 
 * R01.NY
+
+```
+# jan/12/2023 13:14:06 by RouterOS 6.47.9
+# software id = 
+#
+#
+#
+/interface bridge
+add name=Lo
+add name=VPLS
+/interface vpls
+add disabled=no l2mtu=1500 mac-address=02:CB:23:D2:D0:7C name=vpls1 remote-peer=10.10.10.4 vpls-id=10:0
+add disabled=no l2mtu=1500 mac-address=02:24:62:59:B9:A0 name=vpls2 remote-peer=10.10.10.6 vpls-id=10:0
+/interface wireless security-profiles
+set [ find default=yes ] supplicant-identity=MikroTik
+/routing bgp instance
+set default router-id=10.10.10.1
+/routing ospf instance
+set [ find default=yes ] router-id=10.10.10.1
+/interface bridge port
+add bridge=VPLS interface=ether2
+add bridge=VPLS interface=vpls1
+add bridge=VPLS interface=vpls2
+/ip address
+add address=172.31.255.30/30 interface=ether1 network=172.31.255.28
+add address=10.10.10.1 interface=Lo network=10.10.10.1
+add address=192.168.20.10/24 interface=ether2 network=192.168.20.0
+add address=10.10.1.1/30 interface=ether4 network=10.10.1.0
+/ip dhcp-client
+add disabled=no interface=ether1
+/mpls ldp
+set enabled=yes
+/mpls ldp interface
+add interface=ether4
+/routing bgp peer
+add address-families=ip,l2vpn,l2vpn-cisco,vpnv4 name=peer1 remote-address=10.10.10.2 remote-as=65530 update-source=Lo
+/routing ospf network
+add area=backbone
+/system identity
+set name=R01.NY
+
+```
+
 * R01.SPB
+
+```
+# jan/12/2023 13:26:00 by RouterOS 6.47.9
+# software id = 
+#
+#
+#
+/interface bridge
+add name=Lo
+add name=VPLS
+/interface vpls
+add disabled=no l2mtu=1500 mac-address=02:5E:29:75:91:55 name=vpls1 remote-peer=10.10.10.1 vpls-id=10:0
+add disabled=no l2mtu=1500 mac-address=02:B5:27:55:42:F5 name=vpls2 remote-peer=10.10.10.6 vpls-id=10:0
+/interface wireless security-profiles
+set [ find default=yes ] supplicant-identity=MikroTik
+/routing bgp instance
+set default router-id=10.10.10.4
+/routing ospf instance
+set [ find default=yes ] router-id=10.10.10.4
+/interface bridge port
+add bridge=VPLS interface=ether2
+add bridge=VPLS interface=vpls1
+add bridge=VPLS interface=vpls2
+/ip address
+add address=172.31.255.30/30 interface=ether1 network=172.31.255.28
+add address=10.10.3.2/30 interface=ether4 network=10.10.3.0
+add address=192.168.10.10/24 interface=ether2 network=192.168.10.0
+add address=10.10.10.4 interface=Lo network=10.10.10.4
+/ip dhcp-client
+add disabled=no interface=ether1
+/mpls ldp
+set enabled=yes
+/mpls ldp interface
+add interface=ether4
+/routing bgp peer
+add address-families=ip,l2vpn,l2vpn-cisco,vpnv4 name=peer1 remote-address=10.10.10.3 remote-as=65530 update-source=Lo
+/routing ospf network
+add area=backbone
+/system identity
+set name=R01.SPB
+
+```
+
 * R01.SVL
 
+```
+# jan/12/2023 13:30:24 by RouterOS 6.47.9
+# software id = 
+#
+#
+#
+/interface bridge
+add name=Lo
+add name=VPLS
+/interface vpls
+add disabled=no l2mtu=1500 mac-address=02:C7:F9:E4:0E:6F name=vpls1 remote-peer=10.10.10.1 vpls-id=10:0
+add disabled=no l2mtu=1500 mac-address=02:C0:D7:89:7A:9C name=vpls2 remote-peer=10.10.10.4 vpls-id=10:0
+/interface wireless security-profiles
+set [ find default=yes ] supplicant-identity=MikroTik
+/routing bgp instance
+set default router-id=10.10.10.6
+/routing ospf instance
+set [ find default=yes ] router-id=10.10.10.6
+/interface bridge port
+add bridge=VPLS interface=ether2
+add bridge=VPLS interface=vpls1
+add bridge=VPLS interface=vpls2
+/ip address
+add address=172.31.255.30/30 interface=ether1 network=172.31.255.28
+add address=192.168.30.10/24 interface=ether2 network=192.168.30.0
+add address=10.10.6.2/30 interface=ether4 network=10.10.6.0
+add address=10.10.10.6 interface=Lo network=10.10.10.6
+/ip dhcp-client
+add disabled=no interface=ether1
+/mpls ldp
+set enabled=yes
+/mpls ldp interface
+add interface=ether4
+/routing bgp peer
+add address-families=ip,l2vpn,l2vpn-cisco,vpnv4 name=peer1 remote-address=10.10.10.5 remote-as=65530 update-source=Lo
+/routing ospf network
+add area=backbone
+/system identity
+set name=R01.SVL
+```
 
